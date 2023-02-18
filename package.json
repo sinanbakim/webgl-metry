@@ -1,0 +1,23 @@
+{
+  "name": "webgl-metry",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinanbakim/webgl-metry.git"
+  },
+  "author": "Sinan Bakim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sinanbakim/webgl-metry/issues"
+  },
+  "homepage": "https://github.com/sinanbakim/webgl-metry#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5",
+    "webpack": "^5.75.0"
+  }
+}
