@@ -4,10 +4,7 @@
     "description": "",
     "private": true,
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc src/index.ts && webpack --mode=production",
-        "dev": "webpack --mode=development",
-        "tsc": ""
+        "build": "tsc src/index.ts && webpack --mode=production"
     },
     "repository": {
         "type": "git",
