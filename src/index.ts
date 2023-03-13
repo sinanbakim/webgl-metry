@@ -1,44 +1,43 @@
+import { parse, HtmlGenerator } from 'latex.js'
+import { MathfieldElement} from 'mathlive';
+import { Renderer } from './renderer';
+
+
+// Mathfield einlesen
+// const mathfield: MathfieldElement = document.querySelector('#formula');
+const mfe = document.querySelector('#formula') as HTMLInputElement;
+
+mfe.addEventListener('input', (ev) => {
+    // `ev.target` is an instance of `MathfieldElement`
+    var mf = ev.target as MathfieldElement;
+    var formula: string = mf.getValue('latex');
+    console.log(formula);
+
+});
+
+
+
+
+
 // Die Canvas-Elemente vom DOM holen
 const canvas: HTMLCanvasElement = document.querySelector('#canvas');
 
-// Die 2D-Rendering-Kontext-Objekt vom Canvas holen
-const ctx: CanvasRenderingContext2D = canvas.getContext('2d');
+// Eine Instanz der CanvasRenderer-Klasse erstellen
+const r: Renderer = new Renderer(canvas, window.innerWidth, window.innerHeight);
 
-// Die Dimensionen des Canvas setzen
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 
-// Die Startposition des Strichs setzen
-let x: number = 0;
-let y: number = canvas.height / 2;
 
-// Die Animationsfunktion definieren
-function animate(): void {
-  // Die Hintergrundfarbe setzen
-  ctx.fillStyle = 'red';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Die Strichfarbe und -stärke setzen
-  ctx.strokeStyle = 'black';
-  ctx.lineWidth = 2;
-
-  // Den Anfangspunkt des Strichs setzen
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-
-  // Die Endposition des Strichs berechnen
-  x += 5;
-  y = canvas.height / 2 + Math.sin(x / 20) * 50;
-
-  // Die Endposition des Strichs setzen
-  ctx.lineTo(x, y);
-
-  // Den Strich zeichnen
-  ctx.stroke();
-
-  // Die Animation fortsetzen
-  requestAnimationFrame(animate);
+function sineWave(x: number): number {
+    return Math.sin(x / 20) * 50;
 }
 
-// Die Animation starten
-animate();
+function cosineWave(x: number): number {
+    return Math.cos(x / 20) * 50;
+}
+
+r.background('red');
+r.animateFunction = sineWave;
+r.staticFunction = cosineWave;
+r.render();
+r.animate();
