@@ -4,7 +4,8 @@
     "description": "",
     "private": true,
     "scripts": {
-        "build": "tsc src/index.ts && webpack --mode=production"
+        "build": "tsc src/index.ts && webpack --mode=production",
+        "test": "tsc src/index.ts && webpack --mode=development"
     },
     "repository": {
         "type": "git",
@@ -22,6 +23,9 @@
         "webpack-cli": "^5.0.1"
     },
     "dependencies": {
-        "mathlive": "^0.89.2"
+        "latex.js": "^0.12.4",
+        "mathlive": "^0.89.2",
+        "svg.js": "^2.7.1",
+        "svgdom": "^0.1.13"
     }
 }
